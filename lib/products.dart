@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:mystore_admin/addproduct.dart';
 
 import 'detailsscreen.dart';
 
@@ -18,12 +19,19 @@ class productscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: 870,
+        height: 800,
         child: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(height: 30,),
+        ElevatedButton(
+            onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => addproduct())), 
+            // changename(
+            //     productname.text,  productdesc.text),
+            child: Text("Add product")),
               Container(
-                height: 900,
+                height: 830,
                 child: SafeArea(
                   child: SizedBox(
                     child: SingleChildScrollView(
@@ -34,7 +42,7 @@ class productscreen extends StatelessWidget {
                             AsyncSnapshot<QuerySnapshot> snapshot) {
                           if (snapshot.hasError) {
                             print(
-                                '////////////////////////////////////////////////////////////////////////////////////////');
+                              Error);
                           }
             
                           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -62,14 +70,12 @@ class productscreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => Detailsscreen(image: data['images'],
                                       name: data['name'],
                                       price: data['price'],
-                                      desc: data['desc'],
-                                      status: data['status'],))),
+                                      desc: data['desc'],))),
                                     child: SpecialOfferCard(
                                       image: data['images'],
                                       name: data['name'],
                                       price: data['price'],
                                       desc: data['desc'],
-                                      status: data['status'],
                                     ),
                                   ),
                                 ),
@@ -100,14 +106,12 @@ class SpecialOfferCard extends StatelessWidget {
     required this.image,
     required this.price,
     required this.desc,
-    required this.status,
   }) : super(key: key);
 
   final String name;
-  final int price;
+  final String price;
   final List<dynamic> image;
   final String desc;
-  final String status;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -159,10 +163,6 @@ class SpecialOfferCard extends StatelessWidget {
                             ),
                           ),
                           TextSpan(text: "$price/-"),
-                          TextSpan(
-                              text: "$status",
-                              style: TextStyle(
-                                  color: Colors.black45, fontSize: 14)),
                         ],
                       ),
                     ),

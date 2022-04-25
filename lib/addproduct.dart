@@ -5,25 +5,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 
-class Detailsscreen extends StatefulWidget {
-  Detailsscreen({
+class addproduct extends StatefulWidget {
+  addproduct({
     Key? key,
-    required this.name,
-    required this.image,
-    required this.price,
-    required this.desc,
   }) : super(key: key);
 
-  final String name;
-  final String price;
-  final List<dynamic> image;
-  final String desc;
 
   @override
-  State<Detailsscreen> createState() => _DetailsscreenState();
+  State<addproduct> createState() => _addproductState();
 }
 
-class _DetailsscreenState extends State<Detailsscreen> {
+class _addproductState extends State<addproduct> {
   File? file;
 
   TextEditingController productname = TextEditingController();
@@ -38,49 +30,49 @@ class _DetailsscreenState extends State<Detailsscreen> {
     return Scaffold(
         body: Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 100,
         ),
         TextFormField(
           controller: productname,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: "product name",
-            hintText: '${widget.name}',
+            hintText: 'Enter product name',
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(50))),
             floatingLabelBehavior: FloatingLabelBehavior.always,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
-        SizedBox(
+        const SizedBox(
           height: 0,
         ),
         TextFormField(
           controller: productprice,
           keyboardType: TextInputType.text,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: "price",
-            hintText: "${widget.price}",
+            hintText: "Enter product price",
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(50))),
             floatingLabelBehavior: FloatingLabelBehavior.always,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
-        SizedBox(
+        const SizedBox(
           height: 0,
         ),
         TextFormField(
           controller: productdesc,
           keyboardType: TextInputType.text,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: "description",
-            hintText: "${widget.desc}",
+            hintText: "Enter product description",
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(50))),
             floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -91,7 +83,7 @@ class _DetailsscreenState extends State<Detailsscreen> {
                 productname.text, productprice.text, productdesc.text),
             // changename(
             //     productname.text,  productdesc.text),
-            child: Text("Edit products")),
+            child: Text("Add product")),
         ElevatedButton(
             onPressed: () => select_image(),
             // changename(
@@ -101,7 +93,7 @@ class _DetailsscreenState extends State<Detailsscreen> {
           '$filename',
         ),
         ElevatedButton(
-            onPressed: () => upload_image(widget.name),
+            onPressed: () => upload_image(productname.text),
             // changename(
             //     productname.text,  productdesc.text),
             child: Text("upload image")),
@@ -110,13 +102,15 @@ class _DetailsscreenState extends State<Detailsscreen> {
   }
 
   Future<dynamic> changedetails(String name, String price, String desc) async {
+   
+
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user = auth.currentUser;
     CollectionReference<Map<String, dynamic>> users =
         FirebaseFirestore.instance.collection('products');
 
     try {
-      await users.doc(name).update({
+      await users.doc(name).set({
         'name': name,
         'price': price,
         'desc': desc,
@@ -146,8 +140,6 @@ class _DetailsscreenState extends State<Detailsscreen> {
     await ref.putFile(file!);
     final urlDownload = await ref.getDownloadURL();
     print("image link is here.............$urlDownload");
-    products.doc(name).update({
-      "images": FieldValue.arrayUnion([urlDownload])
-    });
+    products.doc(name).update({"images": FieldValue.arrayUnion([urlDownload])});
   }
 }

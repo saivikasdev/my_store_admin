@@ -37,8 +37,8 @@ class MyApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ElevatedButton(
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => usersscreen())),
+                onPressed: () =>Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => usersscreen())), 
                 child: Text("users")),
 
                 
