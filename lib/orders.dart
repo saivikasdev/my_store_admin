@@ -55,7 +55,6 @@ class orderscreen extends StatelessWidget {
                             child: SpecialOfferCard(
                               number: data['phone number'],
                               product_name: data['NAME'],
-                              status: data['status'],
                             ),
                           ),
                         );
@@ -80,12 +79,10 @@ class SpecialOfferCard extends StatelessWidget {
     Key? key,
     required this.number,
     required this.product_name,
-    required this.status,
   }) : super(key: key);
 
   final String number;
   final String product_name;
-  final String status;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -114,11 +111,8 @@ class SpecialOfferCard extends StatelessWidget {
                       ),
                     ),
                     TextSpan(text: "$product_name             "
-                    ,style: TextStyle(color: Color.fromARGB(115, 46, 48, 45), fontSize: 19)
+                    ,style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 19)
                     ),
-                    TextSpan(
-                        text: "$status",
-                        style: TextStyle(color: Color.fromARGB(115, 242, 2, 2), fontSize: 14)),
                   ],
                 ),
               ),
