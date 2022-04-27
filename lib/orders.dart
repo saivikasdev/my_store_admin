@@ -16,7 +16,9 @@ class orderscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20),
+        SizedBox(height: 50),
+
+        Text('Orders',style: TextStyle(color: Colors.black,fontSize: 20),),
         Container(
           height: 820,
           child: SafeArea(
@@ -88,8 +90,8 @@ class SpecialOfferCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),
-          color: Color.fromARGB(255, 255, 145, 48),),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+          color: Color.fromARGB(45, 11, 9, 7),),
           height: 70,
           width: 400,
           child: Row(
@@ -119,7 +121,7 @@ class SpecialOfferCard extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 20,)
+        SizedBox(height: 5,)
       ],
     );
   }

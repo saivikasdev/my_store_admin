@@ -24,6 +24,7 @@ class productscreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 30,),
+              
         ElevatedButton(
             onPressed: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => addproduct())), 
@@ -122,6 +123,7 @@ class SpecialOfferCard extends StatelessWidget {
               right: 30,
               bottom: 50),
           child: Container(
+            color: Colors.black12,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Column(
@@ -162,7 +164,7 @@ class SpecialOfferCard extends StatelessWidget {
                               color: Colors.black,
                             ),
                           ),
-                          TextSpan(text: "$price/-"),
+                          TextSpan(text: "$price/-",style: TextStyle(color: Color.fromARGB(255, 25, 22, 22))),
                         ],
                       ),
                     ),
@@ -171,7 +173,10 @@ class SpecialOfferCard extends StatelessWidget {
               ),
             ),
           ),
+          
         ),
+        
+              Text('Products',style: TextStyle(color: Colors.black,fontSize: 4),) ,
       ],
     );
   }

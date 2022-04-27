@@ -36,16 +36,42 @@ class MyApp extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            ElevatedButton(
-                onPressed: () =>Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => usersscreen())), 
-                child: Text("users")),
 
-                
-            ElevatedButton(
-                onPressed: () => Navigator.push(context,
+            InkWell(
+              onTap:  () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => usersscreen())),
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(60),
+                  color: Color.fromARGB(213, 2, 150, 248),
+                ),
+                height: 60,
+                width: 200,
+                child: Text(
+                  'users',
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
+              ),
+            ),
+
+            InkWell(
+              onTap:  () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => productscreen())),
-                child: Text("Edit products")),
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(60),
+                  color: Color.fromARGB(213, 2, 150, 248),
+                ),
+                height: 60,
+                width: 200,
+                child: Text(
+                  'products',
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
+              ),
+            ),
           ],
         )
       ],

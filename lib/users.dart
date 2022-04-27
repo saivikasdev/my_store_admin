@@ -21,7 +21,9 @@ class usersscreen extends StatelessWidget {
           child: Column(
             children: [
               
-              SizedBox(height: 20),
+              SizedBox(height: 20,
+              ),
+              Text('Users',style: TextStyle(color: Colors.black,fontSize: 20),) ,
               Container(
                 height: 900,
                 child: SafeArea(
@@ -108,8 +110,8 @@ class SpecialOfferCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),
-          color: Color.fromARGB(255, 121, 213, 255),),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(0),
+          color: Color.fromARGB(255, 0, 238, 255),),
           height: 70,
           width: 400,
           child: Row(
@@ -142,7 +144,7 @@ class SpecialOfferCard extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 20,)
+        Container(height: 1,color: Colors.black,)
       ],
     );
   }
