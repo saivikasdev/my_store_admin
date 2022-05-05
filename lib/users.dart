@@ -85,15 +85,6 @@ class usersscreen extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
-
-
 class SpecialOfferCard extends StatelessWidget {
   const SpecialOfferCard({
     Key? key,

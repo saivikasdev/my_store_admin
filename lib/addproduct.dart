@@ -10,7 +10,6 @@ class addproduct extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-
   @override
   State<addproduct> createState() => _addproductState();
 }
@@ -102,8 +101,6 @@ class _addproductState extends State<addproduct> {
   }
 
   Future<dynamic> changedetails(String name, String price, String desc) async {
-   
-
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user = auth.currentUser;
     CollectionReference<Map<String, dynamic>> users =
@@ -137,9 +134,15 @@ class _addproductState extends State<addproduct> {
     final fileName = file!.path;
     final destination = '$fileName';
     final ref = await FirebaseStorage.instance.ref('$fileName');
-    await ref.putFile(file!);
+    try {
+      await ref.putFile(file!);
+    } on Error catch (e) {
+      print("///////////////////////${e}");
+    }
     final urlDownload = await ref.getDownloadURL();
     print("image link is here.............$urlDownload");
-    products.doc(name).update({"images": FieldValue.arrayUnion([urlDownload])});
+    products.doc(name).update({
+      "images": FieldValue.arrayUnion([urlDownload])
+    });
   }
 }

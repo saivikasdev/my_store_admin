@@ -17,8 +17,10 @@ class orderscreen extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: 50),
-
-        Text('Orders',style: TextStyle(color: Colors.black,fontSize: 20),),
+        Text(
+          'Orders',
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
         Container(
           height: 820,
           child: SafeArea(
@@ -30,8 +32,7 @@ class orderscreen extends StatelessWidget {
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.hasError) {
-                      print(
-                          '////////////////////////////////////////////////////////////////////////////////////////');
+                      print("////////////////${snapshot.error}");
                     }
 
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -90,13 +91,17 @@ class SpecialOfferCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-          color: Color.fromARGB(45, 11, 9, 7),),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Color.fromARGB(45, 11, 9, 7),
+          ),
           height: 70,
           width: 400,
           child: Row(
             children: [
-              SizedBox(width: 40,),
+              SizedBox(
+                width: 40,
+              ),
               Text.rich(
                 TextSpan(
                   style: TextStyle(
@@ -112,16 +117,19 @@ class SpecialOfferCard extends StatelessWidget {
                         color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
-                    TextSpan(text: "$product_name             "
-                    ,style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 19)
-                    ),
+                    TextSpan(
+                        text: "$product_name             ",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 0, 0, 0), fontSize: 19)),
                   ],
                 ),
               ),
             ],
           ),
         ),
-        SizedBox(height: 5,)
+        SizedBox(
+          height: 5,
+        )
       ],
     );
   }

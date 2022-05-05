@@ -176,7 +176,6 @@ class SpecialOfferCard extends StatelessWidget {
           
         ),
         
-              Text('Products',style: TextStyle(color: Colors.black,fontSize: 4),) ,
       ],
     );
   }
